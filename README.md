@@ -72,8 +72,10 @@
         Là một con trỏ không trỏ đến bất kỳ đối tượng hoặc vùng nhớ cụ thể nào,kiểm tra xem một con trỏ đã được khởi tạo và có trỏ đến một vùng nhớ hợp lệ chưa
 		    Nên khởi tạo con trỏ là null nếu nó chưa trỏ đến một địa chỉ cụ thể nào
 
+ </details> 
 
- details>
+
+ <details>
    <summary>LESSON 4:MEMORY LAYOUT</summary>
    
       Memory layout gồm 5 phần chính: Text Segment, Initialized Data Segment, Uninitialized Data Segment, Heap và Stack
