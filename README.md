@@ -153,6 +153,7 @@
   ## Register
         Là biến yêu cầu lưu nó vào thanh ghi trong PC, giúp tăng tốc độ thực thi chương trình
         ALU (2)  <=> Register (3) ->  <- (1)  Ram
+					![image](https://github.com/user-attachments/assets/8722e556-0b65-405c-9c64-2caee0e0ea2a)
 
         
 				  Khi thêm từ khóa register để khai báo biến, thì tức là ta đã yêu cầu trình biên dịch ưu tiên đặc biệt dành luôn vùng register để chứa biến đó. 
