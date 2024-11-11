@@ -112,6 +112,8 @@
 		    Có quyền đọc,ghi 
         Mỗi khi các function được gọi thì nó sẽ được push vào vùng stack
     		Sau khi ra khỏi hàm sẽ thu hồi vùng nhớ
+
+</details> 
      
 <details>
   <summary>LESSON 5: Extern - Static - Volatile - Register</summary>
