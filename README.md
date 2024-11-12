@@ -275,11 +275,9 @@
 
 </details> 
 
-<details>
-	
-	<summary>LESSON 8: Struct - Union</summary>
+<details>	
+	<summary>LESSON 8: Struct - Union </summary>
 
- ##Struct
 
 </details>
 
