@@ -80,7 +80,7 @@
    
       Memory layout gồm 5 phần chính: Text Segment, Initialized Data Segment, Uninitialized Data Segment, Heap và Stack
       
-	![Mô tả][(https://raw.githubusercontent.com/PhanAnhUTE/Advanced-C-C-/refs/heads/main/images/a.jpg)](https://github-production-user-asset-6210df.s3.amazonaws.com/173673936/385154159-67d4789e-6bbe-47aa-9a89-0d4eb1a1930a.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241112%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241112T055758Z&X-Amz-Expires=300&X-Amz-Signature=bb97e0a9d6745d4660d4ae37c488a87f95884002a4706bc65f5c038815109432&X-Amz-SignedHeaders=host)
+	![a](https://github.com/user-attachments/assets/67d4789e-6bbe-47aa-9a89-0d4eb1a1930a)
           
       ● Text Segment
         Sau khi compile chương trình thì sẽ có những file nhị phân (những file mà được dùng để execute chương trình khi đổ vào RAM), những file nhị phân (.o) này chứa những cái instructions. Và những cái instructions này sẽ stored ở Text Segment of the memory
