@@ -159,118 +159,13 @@
 				  Và hiển nhiên khi thực hiện tính toán trên biến đó thì giảm được bước 1 và 3, 
 				  Giảm bớt thủ tục thì hiệu năng nó tăng lên
       
-
-     
-     
-
-      
-        
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</details> 
 
             
- a.jpg…]()
-
    
 
  
-      ● Text Segment
-        Sau khi compile chương trình thì sẽ có những file nhị phân (những file mà được dùng để execute chương trình khi đổ vào RAM), những file nhị phân (.o) này chứa những cái instructions. Và những cái instructions này sẽ stored ở Text Segment of the memory
-		    Text segment chỉ có thể ở chế độ read
-      
-      ● Initialized Data
-        Initialized Data (Data Segment - Dữ liệu đã được khởi tạo chứa:
-		        Biến toàn cục được khởi tạo với giá # 0
-		        Biến static được khởi tao với giá trị # 0
-		        Có quyền đọc và ghi
-
-      ● Uninitialized Data
-        Uninitialized Data(BSS - Dữ liệu Chưa Khởi Tạo) chứa:
-            Biến toàn cục khởi tọa với giá trị bằng 0 hoặc không gán giá trị
-				    Chứa biến static được gán với giá trị khởi tạo là 0
-    				Có quyền đọc, ghi
-        
-      ● Heap
-      Dùng cho bộ nhớ để cấp phát động( trong thời gian chạy chương trình).
-      Có thể điều khiển quá trình cấp phát hoặc giải phóng bộ nhớ bằng các câu lệnh như malloc, calloc, relloc. free, delete,...
-      Khi dùng xong thì phải free nếu không sẽ bị leak memory
-        Malloc: Cấp phát bộ nhớ có kích thước nhất định, giá trị trong bộ nhớ là ngẫu nhiên, giá trị rác
-			  Calloc: Cấp phát 1 mảng n phần tử, mỗi phần tử có kích thước nhất định và khởi tạo tất cả phần tử về 0
-			  Realloc: Thay đổi kích thước của bộ nhớ đã được cấp phát trước đó
-
-      ● Stack
-        Khác với Heap thì Stack là một vùng nhớ được cấp phát tự động
-        Chứa các biến cục bộ, tham số truyền vào
-		    Có quyền đọc,ghi 
-        Mỗi khi các function được gọi thì nó sẽ được push vào vùng stack
-    		Sau khi ra khỏi hàm sẽ thu hồi vùng nhớ
-
-</details> 
-     
-<details>
-  <summary>LESSON 5: Extern - Static - Volatile - Register</summary>
-
-  ## Extern
-      Là tham chiếu của 1 biến, hàm đã được định nghĩa ở file khác, phải là toàn cục
-
-  ## Static
-      ● Static với biến cục bộ:
-				Chỉ có giá trị trong hàm nhưng khi ra khỏi hàm không bị mất đi	
-      
     
-			● Static với biến toàn cục:
-				Được khai báo ở bên ngoài tất cả các hàm, có thể truy cập từ bất kỳ hàm nào trong file
-				File khác không thể sử dụng biến này để tránh xung đột
-
-  ## Volatile
-      Thông báo cho compiler không được tối ưu hóa biến này
-
-			Cho biết cho trình biên dịch rằng nó có thể thay đổi bất kỳ lúc 
-   
-				volatile int count;
-
-					void ISR() {
-					count++;
-					}
-
-					int main() {
-					while (1) {
-					// do something
-					}
-					return 0;
-					}
-
-					Trong ví dụ này, chúng ta khai báo biến "count" là volatile để cho biết rằng nó có thể được thay đổi bởi một ISR
-					Nếu không có từ khóa volatile, trình biên dịch có thể tối ưu mã và giả định rằng "count" sẽ không bao giờ thay đổi,
-					dẫn đến hành vi không mong muốn
-  ## Register
-        Là biến yêu cầu lưu nó vào thanh ghi trong PC, giúp tăng tốc độ thực thi chương trình
-        ALU (2)  <=> Register (3) ->  <- (1)  Ram
-					![image](https://github.com/user-attachments/assets/8722e556-0b65-405c-9c64-2caee0e0ea2a)
-
-        
-				  Khi thêm từ khóa register để khai báo biến, thì tức là ta đã yêu cầu trình biên dịch ưu tiên đặc biệt dành luôn vùng register để chứa biến đó. 
-				  Và hiển nhiên khi thực hiện tính toán trên biến đó thì giảm được bước 1 và 3, 
-				  Giảm bớt thủ tục thì hiệu năng nó tăng lên
-      
-
      
      
 
