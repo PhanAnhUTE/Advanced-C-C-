@@ -916,7 +916,7 @@
 </details>
 
 <details>
-	<summary>LESSON 6: Thread </summary>
+	<summary>LESSON 7: Thread </summary>
 		Process: Là chương trình, khởi tạo và chạy trên ram, bên trong chương trình là những task, khi những task chạy // thì là thread
 		Thread:  Nằm trong process, Có 1 hoặc nhiều thread chạy cùng lúc. Mỗi thread chạy 1 công việc khác nhau
 		Thread có tham số đầu vào và thread k có tham số đầu vào: thread NAME (NAME_FUNCTION)
