@@ -900,18 +900,19 @@
 
 <details>
 	<summary>LESSON 6: Design Pattern </summary>
- 		Có 4 loại phổ biến là : singleton, obsever, factory và decorator
-	   		● Singleton: Một lớp chỉ có 1 đối tượng duy nhất
-			      VD: truy cập tới vùng địa chỉ của GPIO thì địa chỉ của GPIO là cố định
-			      Nếu  khởi tạo nhiều đối tượng để truy cập GPIO, mỗi đối tượng sẽ chiếm một vùng nhớ khác nhau nhưng đều trỏ tới cùng địa chỉ GPIO, gây lãng phí bộ 
-			      singleton khởi tạo 1 lần, những thằng khác chỉ là con trỏ trỏ tới địa chỉ của object, giúp tối ưu bộ nhớ, tránh khởi tạo nhiều object
-	 		● Obsever: 1 object thay đổi sẽ thông báo cho các đối tượng
-			      VD: Com VĐK đọc giá trị cảm biến nhiệt độ. Vd: cảm biến nhiệt độ thực hiện việc bật quạt, bật máy lạnh, hiển thị lên LCD => làm nhiều việc cùng lúc với dữ liệu đó 
-			      Ví dụ, khi cảm biến phát hiện nhiệt độ cao, nó có thể kích hoạt cả việc ghi log và cảnh báo mà không cần làm thêm bước lập trình cho từng hành động
-    			● Factory: Khởi tạo 1 object mà lớp con sẽ quyết định loại đối tượng nào
-			      VD: Có rất nhiều loại cảm biến, việc mỗi lần khai báo object cho từng loại cảm biến rất khó để quản lý, chỉ cần khởi tạo object sensor
-       			● Decorator: Thêm tính năng mới vào object mà không làm thay đổi cấu trúc, kết cấu bên trong của class
-			      VD: Cảm biến nhiệt độ có chức năng là đo nhiệt độ, sử dụng decorator để thêm vào những thứ như chuyển đổi sang độ F, lọc nhiễu mà không làm thay đổi tính năng ban đầu
+	
+# Có 4 loại phổ biến là : singleton, obsever, factory và decorator
+	   	● Singleton: Một lớp chỉ có 1 đối tượng duy nhất
+			VD: truy cập tới vùng địa chỉ của GPIO thì địa chỉ của GPIO là cố định
+			Nếu  khởi tạo nhiều đối tượng để truy cập GPIO, mỗi đối tượng sẽ chiếm một vùng nhớ khác nhau nhưng đều trỏ tới cùng địa chỉ GPIO, gây lãng phí bộ 
+			 singleton khởi tạo 1 lần, những thằng khác chỉ là con trỏ trỏ tới địa chỉ của object, giúp tối ưu bộ nhớ, tránh khởi tạo nhiều object
+	 	● Obsever: 1 object thay đổi sẽ thông báo cho các đối tượng
+			 VD: Com VĐK đọc giá trị cảm biến nhiệt độ. Vd: cảm biến nhiệt độ thực hiện việc bật quạt, bật máy lạnh, hiển thị lên LCD => làm nhiều việc cùng lúc với dữ liệu đó 
+			Ví dụ, khi cảm biến phát hiện nhiệt độ cao, nó có thể kích hoạt cả việc ghi log và cảnh báo mà không cần làm thêm bước lập trình cho từng hành động
+    		● Factory: Khởi tạo 1 object mà lớp con sẽ quyết định loại đối tượng nào
+			VD: Có rất nhiều loại cảm biến, việc mỗi lần khai báo object cho từng loại cảm biến rất khó để quản lý, chỉ cần khởi tạo object sensor
+       		● Decorator: Thêm tính năng mới vào object mà không làm thay đổi cấu trúc, kết cấu bên trong của class
+			VD: Cảm biến nhiệt độ có chức năng là đo nhiệt độ, sử dụng decorator để thêm vào những thứ như chuyển đổi sang độ F, lọc nhiễu mà không làm thay đổi tính năng ban đầu
 		
 </details>
 
