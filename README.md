@@ -79,56 +79,8 @@
    <summary>LESSON 4:MEMORY LAYOUT</summary>
    
       Memory layout gồm 5 phần chính: Text Segment, Initialized Data Segment, Uninitialized Data Segment, Heap và Stack
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       
-      
-	  ![a](https://github.com/user-attachments/assets/ed6fa60f-a3b3-47df-9cfc-bc3ab82969bc)
+	  ![a]([https://github.com/user-attachments/assets/ed6fa60f-a3b3-47df-9cfc-bc3ab82969bc](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*LZw36i2MJ8J1YLDL9-PAkg.jpeg))
 
           
       ● Text Segment
