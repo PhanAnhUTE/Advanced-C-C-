@@ -522,13 +522,13 @@
 
  # Class
 
- 		● Class là 1 lớp hoặc là một cấu trúc dữ liệu tự định nghĩa có thể chứa dữ liệu và các hàm thành viên liên quan
-   		● Các phạm vi truy cập: public, protected, private
-     		● Có các: thuộc tính (property), method, phương thức khởi tạo (constructor), hàm hủy (destructor)
-       		● Constructor là một method sẽ được tự động gọi khi khởi tạo object,Constructor sẽ có tên trùng với tên của class
-	 	● Destructor là một method sẽ được tự động gọi khi object được giải phóng (ở trong phân vùng stack)
-   		● Khi obj được khởi tạo, constructor sẽ được gọi, hiển thị "Constructor called"
-     		● Khi chương trình kết thúc hoặc obj ra khỏi phạm vi, destructor sẽ tự động được gọi, hiển thị "Destructor called"
+ 		● Class là 1 lớp hoặc là một cấu trúc dữ liệu tự định nghĩa có thể chứa dữ liệu và các hàm thành viên liên quan.
+   		● Các phạm vi truy cập: public, protected, private.
+     		● Có các: thuộc tính (property), method, phương thức khởi tạo (constructor), hàm hủy (destructor).
+       		● Constructor là một method sẽ được tự động gọi khi khởi tạo object,Constructor sẽ có tên trùng với tên của class.
+	 	● Destructor là một method sẽ được tự động gọi khi object được giải phóng (ở trong phân vùng stack).
+   		● Khi obj được khởi tạo, constructor sẽ được gọi, hiển thị "Constructor called".
+     		● Khi chương trình kết thúc hoặc obj ra khỏi phạm vi, destructor sẽ tự động được gọi, hiển thị "Destructor called".
 	 
        	Static trong class:
 		Nếu như một property được khai báo với từ khóa static thì các object trong class sẽ dùng chung địa chỉ với property này
