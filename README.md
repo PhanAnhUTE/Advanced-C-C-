@@ -519,6 +519,9 @@
 #### ADVANCED C++     
  <details>  
 	<summary>LESSON 1: Class </summary>
+
+ # Class
+
  		● Class là 1 lớp hoặc là một cấu trúc dữ liệu tự định nghĩa có thể chứa dữ liệu và các hàm thành viên liên quan
    		● Các phạm vi truy cập: public, protected, private
      		● Có các: thuộc tính (property), method, phương thức khởi tạo (constructor), hàm hủy (destructor)
