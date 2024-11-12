@@ -215,8 +215,8 @@
                             }
                             return 0;
                         }
-Trong ví dụ trên trạng thái đèn đỏ đầu tiên, khi chờ khoảng 50s thì trạng thái đèn xanh, nó sẽ thoát ra khỏi switch và bắt đầu switch case khác vì nó đã dùng label skip_Spleep (cái này được đặt ngoài hàm nên nôn na sẽ thoát khỏi hàm, lần lượt chuyển sang đèn khác thứ tự là ĐỎ - XANH - VÀNG Setjmp.h là một thư viện trong ngôn ngữ lập trình C cung cấp 2 hàm là setjmp và longjmp dùng để xử lí ngoại lệ trong( nó không tiêu biểu để xử lí ngoại lệ trong ngôn ngữ này).
-Ví dụ về Setjmp.h
+		Trong ví dụ trên trạng thái đèn đỏ đầu tiên, khi chờ khoảng 50s thì trạng thái đèn xanh, nó sẽ thoát ra khỏi switch và bắt đầu switch case khác vì nó đã dùng label skip_Spleep (cái này được đặt ngoài hàm 		nên nôn na sẽ thoát khỏi hàm, lần lượt chuyển sang đèn khác thứ tự là ĐỎ - XANH - VÀNG Setjmp.h là một thư viện trong ngôn ngữ lập trình C cung cấp 2 hàm là setjmp và longjmp dùng để xử lí ngoại lệ 			trong( nó không tiêu biểu để xử lí ngoại lệ trong ngôn ngữ này).
+		Ví dụ về Setjmp.h
                    #include <stdio.h>
                    #include <setjmp.h>
                    
@@ -255,7 +255,7 @@ Ví dụ về Setjmp.h
 
 
 <details>
-	summary>LESSON 7: BITMASK </summary>
+	<summary>LESSON 7: BITMASK </summary>
 	
  
  		Được sử dụng để tối ưu hóa bộ nhớ
