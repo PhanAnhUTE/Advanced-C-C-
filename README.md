@@ -909,7 +909,7 @@
     
 	 	● Obsever: 1 object thay đổi sẽ thông báo cho các đối tượng
 			VD: Com VĐK đọc giá trị cảm biến nhiệt độ. Vd: cảm biến nhiệt độ thực hiện việc bật quạt, bật máy lạnh, hiển thị lên LCD => làm nhiều việc cùng lúc với dữ liệu đó 
-			Ví dụ, khi cảm biến phát hiện nhiệt độ cao, nó có thể kích hoạt cả việc ghi log và cảnh báo mà không cần làm thêm bước lập trình cho từng hành động
+			Ví dụ khi cảm biến phát hiện nhiệt độ cao, nó có thể kích hoạt cả việc ghi log và cảnh báo mà không cần làm thêm bước lập trình cho từng hành động
    
     		● Factory: Khởi tạo 1 object mà lớp con sẽ quyết định loại đối tượng nào
 			VD: Có rất nhiều loại cảm biến, việc mỗi lần khai báo object cho từng loại cảm biến rất khó để quản lý, chỉ cần khởi tạo object sensor
