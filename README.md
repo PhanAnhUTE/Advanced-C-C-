@@ -80,7 +80,8 @@
    
       Memory layout gồm 5 phần chính: Text Segment, Initialized Data Segment, Uninitialized Data Segment, Heap và Stack
       
-	![Mô tả ảnh](https://raw.githubusercontent.com/PhanAnhUTE/Advanced-C-C-/main/a.jpg)   
+	![Mô tả ảnh](https://raw.githubusercontent.com/PhanAnhUTE/Advanced-C-C-/main/a.jpg)
+   
 
  
       ● Text Segment
