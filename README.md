@@ -80,7 +80,7 @@
    
       Memory layout gồm 5 phần chính: Text Segment, Initialized Data Segment, Uninitialized Data Segment, Heap và Stack
       
-	![Uploading##### ADVANCE C
+	
 
 <details>
   <summary>LESSION 1: Compiler - Macro C</summary>
