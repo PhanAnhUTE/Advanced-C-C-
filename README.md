@@ -164,7 +164,7 @@
 <details>
 	<summary>LESSON 6: GOTO - SETJMP </summary>
 	
-		*Goto* là một từ khóa trong ngôn ngữ lập trình C cho phép người dùng nhảy đến một label đã được đặt trước đó trong cùng một. Không được khuyến khích dùng vì nó làm cho chương trình trở nên khó đọc và bảo trì. >- Ví dụ về từ khóa *go to*
+		*Goto* là một từ khóa trong ngôn ngữ lập trình C cho phép người dùng nhảy đến một label đã được đặt trước đó trong cùng một. Không được khuyến khích dùng vì nó làm cho chương trình trở nên khó đọc và bảo 			trì. >- Ví dụ về từ khóa *go to*
                         #include <stdio.h>
                         void delay(double second)
                         {
@@ -256,7 +256,7 @@ Ví dụ về Setjmp.h
 
 <details>
 	
-	<summary>LESSON 7: BITMASK </summary>
+	<summary>LESSON 7: BITMASK</summary>
  
  		Được sử dụng để tối ưu hóa bộ nhớ
 
@@ -277,7 +277,7 @@ Ví dụ về Setjmp.h
 
 <details>
 	
-	<summary>LESSON 8: Struct - Union </summary>
+	<summary>LESSON 8: Struct - Union</summary>
 
  ##Struct
 
