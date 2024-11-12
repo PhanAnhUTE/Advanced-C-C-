@@ -277,7 +277,8 @@
 
 <details>	
 	<summary>LESSON 8: Struct - Union </summary>
-
+   ##Struct 
+   	
 
 </details>
 
