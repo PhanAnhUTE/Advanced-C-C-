@@ -906,13 +906,81 @@
 <details>
 	<summary>LESSON 6: Design Pattern </summary>
 	
-# Có 4 loại phổ biến là : singleton, obsever, factory và decorator
-	   	● Singleton: Một lớp chỉ có 1 đối tượng duy nhất
+# Có 4 loại phổ biến là : singleton, obsever, factory và 
+
+● Singleton: Một lớp chỉ có 1 đối tượng duy nhất
 			VD: truy cập tới vùng địa chỉ của GPIO thì địa chỉ của GPIO là cố định
 			Nếu  khởi tạo nhiều đối tượng để truy cập GPIO, mỗi đối tượng sẽ chiếm một vùng nhớ khác nhau nhưng đều trỏ tới cùng địa chỉ GPIO, gây lãng phí bộ 
-			 singleton khởi tạo 1 lần, những thằng khác chỉ là con trỏ trỏ tới địa chỉ của object, giúp tối ưu bộ nhớ, tránh khởi tạo nhiều object
+			singleton khởi tạo 1 lần, những thằng khác chỉ là con trỏ trỏ tới địa chỉ của object, giúp tối ưu bộ nhớ, tránh khởi tạo nhiều object
+   			VD:
+				#include <iostream>
+ 
+				class Singleton {
+				public:
+				    // Static method to access the singleton instance
+				    static Singleton& getInstance()
+				    {
+				        // If the instance doesn't exist, create it
+				        if (!instance) {
+				            instance = new Singleton();
+				        }
+				        return *instance;
+				    }
+				 
+				    // Public method to perform some operation
+				    void someOperation()
+				    {
+				        std::cout
+				            << "Singleton is performing some operation."
+				            << std::endl;
+				    }
+				 
+				    // Delete the copy constructor and assignment operator
+				    Singleton(const Singleton&) = delete;
+				    Singleton& operator=(const Singleton&) = delete;
+				 
+				private:
+				    // Private constructor to prevent external instantiation
+				    Singleton()
+				    {
+				        std::cout << "Singleton instance created."
+				                  << std::endl;
+				    }
+				 
+				    // Private destructor to prevent external deletion
+				    ~Singleton()
+				    {
+				        std::cout << "Singleton instance destroyed."
+				                  << std::endl;
+				    }
+				 
+				    // Private static instance variable
+				    static Singleton* instance;
+				};
+				 
+				// Initialize the static instance variable to nullptr
+				Singleton* Singleton::instance = nullptr;
+				 
+				int main()
+				{
+				    // Access the Singleton instance
+				    Singleton& singleton = Singleton::getInstance();
+				 
+				    // Use the Singleton instance
+				    singleton.someOperation();
+				 
+				    // Attempting to create another instance will not work
+				    // Singleton anotherInstance; // This line would not
+				    // compile
+				 
+				    return 0;
+				}
+
+    		Giải thích:
+      			- Một lớp Singleton với một hàm tạo và một hàm hủy riêng, đảm bảo rằng lớp chỉ có thể được khởi tạo và hủy từ bên trong chính lớp đó
+	 		- 
     
-	 	● Obsever: 1 object thay đổi sẽ thông báo cho các đối tượng
+● Obsever: 1 object thay đổi sẽ thông báo cho các đối tượng
 			VD: Com VĐK đọc giá trị cảm biến nhiệt độ. Vd: cảm biến nhiệt độ thực hiện việc bật quạt, bật máy lạnh, hiển thị lên LCD => làm nhiều việc cùng lúc với dữ liệu đó 
 			Ví dụ khi cảm biến phát hiện nhiệt độ cao, nó có thể kích hoạt cả việc ghi log và cảnh báo mà không cần làm thêm bước lập trình cho từng hành động
    
