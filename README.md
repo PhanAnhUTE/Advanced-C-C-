@@ -358,7 +358,7 @@ Trong ví dụ trên trạng thái đèn đỏ đầu tiên, khi chờ khoảng 
 		                "SLR"  : [20, 30, 50]
 		              } "
 			
-		● Các kiểu của JSON typedef enum { JS_NULL, JS_Boolean, JS_Number, JS_String, JS_Array, JS_Ọpect } JS_type;
+● Các kiểu của JSON typedef enum { JS_NULL, JS_Boolean, JS_Number, JS_String, JS_Array, JS_Ọpect } JS_type;
 </details>
 
 <details>
