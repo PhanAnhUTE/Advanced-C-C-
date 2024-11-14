@@ -2,11 +2,34 @@
 
 <details>
   <summary>LESSION 1: Compiler - Macro C</summary>
+
+## Compiler
+Compiler hay còn gọi là trình biên dịch là công việc dịch chuỗi câu lệnh được viết từ một ngôn ngữ lập trình thành chương trình tương đương dưới dạng ngôn ngữ máy tính, thường là ngôn ngữ ở cấp thấp hơn, ngôn ngữ máy.
+Bao gồm các bước:
+● Preprocessing: chuyển đổi các file .c .h .cpp .hpp,... thành các file .i .ii. Bước này cơ bản là chèn nội dung của các file được "#include" vào file output, thay thế nội dung đã được khai báo của các macro và xoá các dòng comment có trong chương trình.
+    	gcc -E <input.c> -o <output.i>
+
+● Compile: dịch các file .i .ii thành các file ngôn ngữ assembly .s.
+	gcc <input.i> -S -o <output.s>
+
+● Assembler: dịch file assembly .s thành mã máy .o. File mã máy bao gồm 2 thành phần chính là địa chỉ thanh ghi và giá trị tại địa chỉ đó. File mã máy có thể ở 2 dạng là mã nhị phân (bin) và mã 16 (hex).
+    	gcc -c <input.s> -o <output.o>
+
+● Linker: liên kết các file mã máy .o lại để tạo thành một file có thể xuất được .exe. Những file .exe là những file được nạp cho máy tính để máy tính có thể xử lý.
+    	gcc <input1.o> <input2.o>... -o <output.s>
+
+## Macro
   
     - Định nghĩa Macro bằng lệnh chỉ thị #define kèm theo với một tên hoặc một hàm bất kỳ
         VD: #define var 100 
     - Trong quá trình tiền xủ lý(preprocessors), nếu xuất hiện một macro var thì bộ preprocessors sẽ thay thế các macro đó bằng 100
     - Macro có thể chứa hàm số, các tham số ở trong macro có thể là bất kì kiểu dữ liệu nào
+    Các loại Macro:
+    ● #include: khi preprocessing, editor sẽ chèn nội dung của một file vào chương trình. Macro này giúp chia nhỏ chương trình chính thành những file nhỏ hơn để dễ dàng quản lý
+    ● #define: định nghĩa một chuỗi code bằng một chuỗi code khác giúp code được gọn, debug dễ. Khi preprocessing, những chuỗi được #define sẽ được thay thế bằng định nghĩa của chúng
+    ● #undef: xoá định nghĩa trước đó của chuỗi
+    ● #ifdef, #ifndef: check xem chuỗi đó đã được định nghĩa chưa, nếu có (#ifdef) hoặc không (#ifndef) thì sẽ biên dịch chương trình sau macro cho tới #endif
+    ● #if, #elif, #else: nếu điều kiện #if đúng thì sẽ biên dịch chương trình sau đó, nếu sai thì bỏ qua và xét tới các #elif, nếu tất cả sai thì biên dịch chương trình sau #else cho tới khi gặp #endif
   
 </details>
 
@@ -80,11 +103,10 @@
    
       Memory layout gồm 5 phần chính: Text Segment, Initialized Data Segment, Uninitialized Data Segment, Heap và Stack	
       
-      ![alttext](https://github.com/PhanAnhUTE/Advanced-C-C-/blob/main/bb.jpg?raw=true)(https://imgur.com/a/yNcJvQQ)
 
       ● Text Segment
         Sau khi compile chương trình thì sẽ có những file nhị phân (những file mà được dùng để execute chương trình khi đổ vào RAM), những file nhị phân (.o) này chứa những cái instructions. Và những cái instructions này sẽ stored ở Text Segment of the memory
-		    Text segment chỉ có thể ở chế độ read
+	Text segment chỉ có thể ở chế độ read
       
       ● Initialized Data
         Initialized Data (Data Segment - Dữ liệu đã được khởi tạo chứa:
@@ -102,16 +124,17 @@
       Dùng cho bộ nhớ để cấp phát động( trong thời gian chạy chương trình).
       Có thể điều khiển quá trình cấp phát hoặc giải phóng bộ nhớ bằng các câu lệnh như malloc, calloc, relloc. free, delete,...
       Khi dùng xong thì phải free nếu không sẽ bị leak memory
+      
         Malloc: Cấp phát bộ nhớ có kích thước nhất định, giá trị trong bộ nhớ là ngẫu nhiên, giá trị rác
-			  Calloc: Cấp phát 1 mảng n phần tử, mỗi phần tử có kích thước nhất định và khởi tạo tất cả phần tử về 0
-			  Realloc: Thay đổi kích thước của bộ nhớ đã được cấp phát trước đó
+	Calloc: Cấp phát 1 mảng n phần tử, mỗi phần tử có kích thước nhất định và khởi tạo tất cả phần tử về 0
+	Realloc: Thay đổi kích thước của bộ nhớ đã được cấp phát trước đó
 
       ● Stack
         Khác với Heap thì Stack là một vùng nhớ được cấp phát tự động
         Chứa các biến cục bộ, tham số truyền vào
-		    Có quyền đọc,ghi 
+	Có quyền đọc,ghi 
         Mỗi khi các function được gọi thì nó sẽ được push vào vùng stack
-    		Sau khi ra khỏi hàm sẽ thu hồi vùng nhớ
+    	Sau khi ra khỏi hàm sẽ thu hồi vùng nhớ
 
 </details> 
      
@@ -123,12 +146,12 @@
 
   ## Static
       ● Static với biến cục bộ:
-				Chỉ có giá trị trong hàm nhưng khi ra khỏi hàm không bị mất đi	
+	  Chỉ có giá trị trong hàm nhưng khi ra khỏi hàm không bị mất đi	
       
     
-			● Static với biến toàn cục:
-				Được khai báo ở bên ngoài tất cả các hàm, có thể truy cập từ bất kỳ hàm nào trong file
-				File khác không thể sử dụng biến này để tránh xung đột
+     ● Static với biến toàn cục:
+	  Được khai báo ở bên ngoài tất cả các hàm, có thể truy cập từ bất kỳ hàm nào trong file
+	  File khác không thể sử dụng biến này để tránh xung đột
 
   ## Volatile
       Thông báo cho compiler không được tối ưu hóa biến này
@@ -154,12 +177,10 @@
   ## Register
         Là biến yêu cầu lưu nó vào thanh ghi trong PC, giúp tăng tốc độ thực thi chương trình
         ALU (2)  <=> Register (3) ->  <- (1)  Ram
-					![image](https://github.com/user-attachments/assets/8722e556-0b65-405c-9c64-2caee0e0ea2a)
-
-        
-				  Khi thêm từ khóa register để khai báo biến, thì tức là ta đã yêu cầu trình biên dịch ưu tiên đặc biệt dành luôn vùng register để chứa biến đó. 
-				  Và hiển nhiên khi thực hiện tính toán trên biến đó thì giảm được bước 1 và 3, 
-				  Giảm bớt thủ tục thì hiệu năng nó tăng lên
+					
+	 Khi thêm từ khóa register để khai báo biến, thì tức là ta đã yêu cầu trình biên dịch ưu tiên đặc biệt dành luôn vùng register để chứa biến đó. 
+	 Và hiển nhiên khi thực hiện tính toán trên biến đó thì giảm được bước 1 và 3, 
+	 Giảm bớt thủ tục thì hiệu năng nó tăng lên
       
 </details> 
 
@@ -217,7 +238,8 @@
                             }
                             return 0;
                         }
-		Trong ví dụ trên trạng thái đèn đỏ đầu tiên, khi chờ khoảng 50s thì trạng thái đèn xanh, nó sẽ thoát ra khỏi switch và bắt đầu switch case khác vì nó đã dùng label skip_Spleep (cái này được đặt ngoài hàm 		nên nôn na sẽ thoát khỏi hàm, lần lượt chuyển sang đèn khác thứ tự là ĐỎ - XANH - VÀNG Setjmp.h là một thư viện trong ngôn ngữ lập trình C cung cấp 2 hàm là setjmp và longjmp dùng để xử lí ngoại lệ 			trong( nó không tiêu biểu để xử lí ngoại lệ trong ngôn ngữ này).
+Trong ví dụ trên trạng thái đèn đỏ đầu tiên, khi chờ khoảng 50s thì trạng thái đèn xanh, nó sẽ thoát ra khỏi switch và bắt đầu switch case khác vì nó đã dùng label skip_Spleep (cái này được đặt ngoài hàm nên nôn na sẽ thoát khỏi hàm, lần lượt chuyển sang đèn khác thứ tự là ĐỎ - XANH - VÀNG Setjmp.h là một thư viện trong ngôn ngữ lập trình C cung cấp 2 hàm là setjmp và longjmp dùng để xử lí ngoại lệ trong( nó không tiêu biểu để xử lí ngoại lệ trong ngôn ngữ này)
+
 		Ví dụ về Setjmp.h
                    #include <stdio.h>
                    #include <setjmp.h>
@@ -262,13 +284,13 @@
  
  		Được sử dụng để tối ưu hóa bộ nhớ
 
-      ● NOT biswise: Khi thực hiện phép toán này thì kết quả của nó là đão của nó. Ví dụ: 1 not bitwise được kết quả là 0
-      ● AND biswise: Kết quả là 1 nếu 2 bit đều là 1, còn lại là 0.
+      ● NOT biswise (~): Khi thực hiện phép toán này thì kết quả của nó là đão của nó. Ví dụ: 1 not bitwise được kết quả là 0
+      ● AND biswise (&): Kết quả là 1 nếu 2 bit đều là 1, còn lại là 0.
 		    Có 1 phép toán hay. Ví dụ nếu ta muốn coi 1 số là chẵn lẽ thì mình có thể dùng %2 nhưng ngoài ra mình cũng có thể sử dụng bitwise AND(&). Mình chỉ cần & số đó với 1(&1).
 		    Nếu kết quả là 1 thì số đó là số lẻ, còn kết quả là 0 thì số đó là số chẵn
 		    Giải thích: tại vì số lẻ là số có bit bên trái ngoài cùng là 1, còn số chẵn thì là số 0. Khi &1 thì tất cả 7 bit trong đều về 0, còn trạng thái của bit cuối &1 thôi. Nên nếu 1&1 sẽ ra 1=>số chẵn, 		                ngược lại số lẻ.
-      ● OR biswise: 0 OR 0 là 0, còn lại là 1.
-      ● XOR bitwise: giống nhau thì bằng 0, khác nhau = 1.
+      ● OR biswise (|): 0 OR 0 là 0, còn lại là 1.
+      ● XOR bitwise (^): giống nhau thì bằng 0, khác nhau = 1.
       ● Shift Left và Shif Right bitwise: << (dịch trái) , >> (dịch phải).
 					 Thường ta sẽ bù bit 0 nhưng khi dịch phải có 1 lưu ý đó là: phải chú ý đến bit cao nhất(bit dấu).
 					 Bit dấu: nếu bit max là 1 thì đó là số âm nên khi dịch phải mình bù vào số 1.
@@ -341,19 +363,19 @@
 
 <details>
 	<summary>LESSON 10: Linked List </summary>
+	
 		Việc xóa hay chèn phần tử vào vị trí bất kỳ rất phức tạp khi chúng ta phải, giả sử muốn xóa 1 phần tử bất kỳ 
 		Cho giá trị đó là null xong sẽ tăng giá trị hiện tại lên, giá trị phần tử cuối cùng reallocate để chuỗi còn (n-1) phần tử
 		Nếu như mảng có 1000, 10000 100000 phần tử khi muốn xóa ở vị trí bất kỳ phải dịch chuyển 999,9999,99999 vòng lặp
 		Cho nên Linked List đã ra đời để giải quyết vấn đề đó
 	
-	● Linked List là một cấu trúc dữ liệu trong lập trình máy tính dùng để tổ chức và lưu trữ dữ liệu. Một linked list bao gồm một chuỗi các nút (node), mỗi nút chứa một giá trị dữ liệu hoặc một con trỏ(pointer) tới 	  nút tiếp theo trong chuỗi. Note cuối thì con trỏ NULL
+● Linked List là một cấu trúc dữ liệu trong lập trình máy tính dùng để tổ chức và lưu trữ dữ liệu. Một linked list bao gồm một chuỗi các nút (node), mỗi nút chứa một giá trị dữ liệu hoặc một con trỏ(pointer) tới nút tiếp theo trong chuỗi. Node cuối thì con trỏ NULL
  
-
 	  Muốn thêm một node vào cuối một mảng thì mình tạo ra một note trước, giá trị của con trỏ là null, sau đó mình lưu địa chỉ của nó vào pointer của note trước nó
 
    	  Ví dụ: thêm node vào vị trí thứ 2 của mảng: ta chỉ cần thay đổi pointer của nút cần thêm vào là dịa chỉ của phần từ tiếp theo , và thay đổi pointer của nút trước đó thành địa chỉ của nút mình muốn thêm vào
 
-      	  Muốn xóa một phần tử tại vị trí bất kì ta chỉ cần gì note của phần tử đó vào node của phần tử đứng trước đó (tương đương với ghi địa chỉ của phần tử tiếp theo vào vị trí của phần tử đứng trước đó vì note của 	  phần tử đó lưu địa chỉ của phần tử đứng sau)
+      	  Muốn xóa một phần tử tại vị trí bất kì ta chỉ cần gì note của phần tử đó vào node của phần tử đứng trước đó (tương đương với ghi địa chỉ của phần tử tiếp theo vào vị trí của phần tử đứng trước đó vì note của phần tử đó lưu địa chỉ của phần tử đứng sau)
  	
 </details>
 
@@ -534,8 +556,11 @@
 	 
        	Static trong class:
 		Nếu như một property được khai báo với từ khóa static thì các object trong class sẽ dùng chung địa chỉ với property này
-	Static sử dụng trong class: là biến dùng chung, một property trong class được khai báo với từ khóa static, thì tất cả các object sẽ dùng chung địa chỉ của property này.
-		Khi một method trong class được khai báo với từ khóa static: Method này độc lập với bất kỳ đối tượng nào của lớp. Method này có thể được gọi ngay cả khi không có đối tượng nào của class tồn tại. Method 		này có thể được truy cập bằng cách sử dụng tên class thông qua toán tử :: . Method này có thể truy cập các static property và các static method bên trong hoặc bên ngoài class. Method có phạm vi bên trong 		class và không thể truy cập con trỏ đối tượng hiện tại.
+  
+	Static sử dụng trong class: 
+ 		Là biến dùng chung, một property trong class được khai báo với từ khóa static, thì tất cả các object sẽ dùng chung địa chỉ của property này.
+		Khi một method trong class được khai báo với từ khóa static: Method này độc lập với bất kỳ đối tượng nào của lớp. Method này có thể được gọi ngay cả khi không có đối tượng nào của class tồn tại. Method này có thể được truy cập bằng cách sử dụng tên 
+                class thông qua toán tử :: . Method này có thể truy cập các static property và các static method bên trong hoặc bên ngoài class. Method có phạm vi bên trong class và không thể truy cập con trỏ đối tượng hiện tại.
  </details>
 
 <details>
@@ -817,9 +842,8 @@
 		Vector là một trong những container quan trọng nhất của C++. Nó cấp một mảng động với khả năng thay đổi kích thước một cách linh hoạt.	
 ## Iterator: 
 	Trong C++, iterator là một khái niệm giúp truy cập các phần tử của một container,
-	một cách tuần tự mà không cần phải biết cấu trúc nội bộ của container. Nó đóng vai trò như một con trỏ, nhưng mạnh mẽ và an toàn hơn.
-	Iterator giúp dễ dàng duyệt qua và thao tác với các phần tử trong container một cách linh hoạt
- 
+	Một cách tuần tự mà không cần phải biết cấu trúc nội bộ của container. Nó đóng vai trò như một con trỏ, nhưng mạnh mẽ và an toàn hơn.
+	Iterator giúp dễ dàng duyệt qua và thao tác với các phần tử trong container một cách linh hoạt bằng cách dùng các method như begin(), end() và các phép toán tử để duyệt qua
  </details>
 
  <details>   
@@ -977,19 +1001,299 @@
 				}
 
     		Giải thích:
-      			- Một lớp Singleton với một hàm tạo và một hàm hủy riêng, đảm bảo rằng lớp chỉ có thể được khởi tạo và hủy từ bên trong chính lớp đó
-	 		- 
+      			- Lớp Singleton có một constructor và destructor được khai báo là private, nghĩa là chúng chỉ có thể được truy cập từ bên trong lớp. Điều này ngăn không cho bất kỳ đối tượng nào bên ngoài lớp có thể tạo hoặc hủy một instance của lớp này
+	 		- Get instance là một phương thức static giúp truy cập đến instance duy nhất của lớp Singleton, instance của Singleton chỉ được tạo ra lần đầu tiên khi getInstance được gọi. Các lần gọi tiếp theo sẽ trả về instance đã được tạo trước đó
+    			- Xóa bỏ copy constructor và toán tử gán (operator=) để ngăn chặn việc sao chép đối tượng Singleton. Điều này đảm bảo rằng không có bất kỳ instance nào khác của Singleton được tạo ra thông qua việc sao chép
+       			- Trong hàm main, có thể truy cập và sử dụng instance của Singleton thông qua getInstance. Nếu cố gắng tạo một instance mới bằng constructor thông thường, trình biên dịch sẽ báo lỗi vì constructor là private
     
 ● Obsever: 1 object thay đổi sẽ thông báo cho các đối tượng
 			VD: Com VĐK đọc giá trị cảm biến nhiệt độ. Vd: cảm biến nhiệt độ thực hiện việc bật quạt, bật máy lạnh, hiển thị lên LCD => làm nhiều việc cùng lúc với dữ liệu đó 
 			Ví dụ khi cảm biến phát hiện nhiệt độ cao, nó có thể kích hoạt cả việc ghi log và cảnh báo mà không cần làm thêm bước lập trình cho từng hành động
+   			VD:
+	      			#include <iostream>
+				#include <vector>
+				
+				// Observer interface
+				class Observer {
+				public:
+				    virtual void update(float temperature, float humidity, float pressure) = 0;
+				};
+				
+				// Subject (WeatherStation) class
+				class WeatherStation {
+				private:
+				    float temperature;
+				    float humidity;
+				    float pressure;
+				    std::vector<Observer*> observers;
+				
+				public:
+				    void registerObserver(Observer* observer) {
+				        observers.push_back(observer);
+				    }
+				
+				    void removeObserver(Observer* observer) {
+				        // You can implement the removal logic if needed.
+				    }
+				
+				    void notifyObservers() {
+				        for (Observer* observer : observers) {
+				            observer->update(temperature, humidity, pressure);
+				        }
+				    }
+				
+				    void setMeasurements(float temp, float hum, float press) {
+				        temperature = temp;
+				        humidity = hum;
+				        pressure = press;
+				        notifyObservers();
+				    }
+				};
+				
+				// Concrete Observer
+				class Display : public Observer {
+				public:
+				    void update(float temperature, float humidity, float pressure) {
+				        std::cout << "Display: Temperature = " << temperature
+				                  << "°C, Humidity = " << humidity
+				                  << "%, Pressure = " << pressure << " hPa"
+				                  << std::endl;
+				    }
+				};
+				
+				int main() {
+				    WeatherStation weatherStation;
+				
+				    // Create displays
+				    Display display1;
+				    Display display2;
+				
+				    // Register displays as observers
+				    weatherStation.registerObserver(&display1);
+				    weatherStation.registerObserver(&display2);
+				
+				    // Simulate weather data updates
+				    weatherStation.setMeasurements(25.5, 60, 1013.2);
+				    weatherStation.setMeasurements(24.8, 58, 1014.5);
+				
+				    return 0;
+				}
+    		Giải thích: 
+      			- Định nghĩa 1 giao diện Observer (hay interface Observer) với 1 phương thức update, bất kỳ lớp nào muốn nhận thông tin đều phải triển khai phương thức update này để hiển thị dữ liệu thời tiết mới nhất khi có cập nhật
+	 		- WeatherStation là lớp đóng vai trò là chủ thể (Subject). Lớp này lưu trữ các dữ liệu thời tiết như nhiệt độ, độ ẩm, và áp suất
+    			- Nó có các phương thức sau:
+				registerObserver: Đăng ký 1 observer mới vào danh sách.
+				removeObserver: Xóa 1 observer khỏi danh sách.
+				notifyObservers: Gửi thông báo đến tất cả các observer đã đăng ký bằng cách gọi phương thức update của họ.
+				setMeasurements: Cập nhật dữ liệu thời tiết mới và kích hoạt thông báo đến các observer
+    			- Display là 1 lớp cụ thể (concrete observer) triển khai giao diện Observer. Lớp này thực hiện phương thức update để nhận và hiển thị dữ liệu thời tiết mới, khi WeatherStation gọi update trên một instance của Display, nó sẽ hiển thị thông 
+                          tin như nhiệt độ, độ ẩm, và áp suất mới nhất
+			- Trong main, tạo 1 instance của WeatherStation và 2 instance của Display, đóng vai trò là các observer, các Display này với WeatherStation để nhận thông báo về dữ liệu thời tiết, Khi dữ liệu thời tiết được cập nhật trong WeatherStation, các 			  Display được thông báo và hiển thị thông tin mới
    
-    		● Factory: Khởi tạo 1 object mà lớp con sẽ quyết định loại đối tượng nào
+● Factory: Khởi tạo 1 object mà lớp con sẽ quyết định loại đối tượng nào
 			VD: Có rất nhiều loại cảm biến, việc mỗi lần khai báo object cho từng loại cảm biến rất khó để quản lý, chỉ cần khởi tạo object sensor
+   			VD:
+      				#include <bits/stdc++.h>;
+				class Shape {
+				public:
+				    virtual void draw() = 0;
+				    virtual ~Shape() {
+				    } // Virtual destructor for polymorphism
+				};
+				// Concrete product class - Circle
+				class Circle : public Shape {
+				public:
+				    void draw() override
+				    {
+				        std::cout<<"Drawing a Circle"<<std::endl;
+				    }
+				};
+				
+				// Concrete product class - Square
+				class Square : public Shape {
+				public:
+				    void draw() override
+				    {
+				        std::cout<<"Drawing a Square"<<std::endl;
+				    }
+				};
+				// Abstract creator class
+				class ShapeFactory {
+				public:
+				    virtual Shape* createShape() = 0;
+				    virtual ~ShapeFactory() {
+				    } // Virtual destructor for polymorphism
+				};
+				// Concrete creator class - CircleFactory
+				class CircleFactory : public ShapeFactory {
+				public:
+				    Shape* createShape() override { return new Circle(); }
+				};
+				
+				// Concrete creator class - SquareFactory
+				class SquareFactory : public ShapeFactory {
+				public:
+				    Shape* createShape() override { return new Square(); }
+				};
+				int main()
+				{
+				    ShapeFactory* circleFactory = new CircleFactory();
+				    ShapeFactory* squareFactory = new SquareFactory();
+				
+				    Shape* circle = circleFactory->createShape();
+				    Shape* square = squareFactory->createShape();
+				
+				    circle->draw(); // Output: Drawing a Circle
+				    square->draw(); // Output: Drawing a Square
+				
+				    delete circleFactory;
+				    delete squareFactory;
+				    delete circle;
+				    delete square;
+				    return 0;
+				}
+    		Giải thích:
+      			- ShapeFactory là lớp cơ sở (abstract creator) cung cấp một phương thức ảo thuần túy, gọi là createShape().
+			  Phương thức createShape() được khai báo nhưng chưa có phần thân trong lớp trừu tượng này, nhằm mục đích cho phép các lớp con cụ thể triển khai nó để tạo ra những sản phẩm khác nhau
+     			- Các lớp cụ thể CircleFactory và SquareFactory kế thừa từ ShapeFactory và triển khai phương thức createShape() để tạo ra các sản phẩm cụ thể.
+			  Mỗi lớp con (CircleFactory và SquareFactory) tạo ra một loại sản phẩm riêng (Circle hoặc Square)
+     			- Circle và Square là các lớp cụ thể của sản phẩm mà các nhà máy (factory) tạo ra.
+			  Những lớp này đại diện cho các loại hình dạng khác nhau, và được tạo ra bởi các concrete creators tương ứng
+     			- Client tương tác với ShapeFactory (creator trừu tượng), và không cần biết về các loại sản phẩm cụ thể như Circle hay Square.
+			  Nhờ vào tính chất này, client có thể sử dụng các sản phẩm được tạo ra mà không cần phụ thuộc vào các chi tiết cụ thể của chúng, giúp tăng tính linh hoạt và tách rời giữa client và các lớp sản phẩm.
    
-       		● Decorator: Thêm tính năng mới vào object mà không làm thay đổi cấu trúc, kết cấu bên trong của class
+● Decorator: Thêm tính năng mới vào object mà không làm thay đổi cấu trúc, kết cấu bên trong của class
 			VD: Cảm biến nhiệt độ có chức năng là đo nhiệt độ, sử dụng decorator để thêm vào những thứ như chuyển đổi sang độ F, lọc nhiễu mà không làm thay đổi tính năng ban đầu
-		
+   			VD:
+      				#include <iostream>
+				#include <string>
+				 
+				using namespace std;
+				 
+				// Component interface - defines the basic ice cream
+				// operations.
+				class IceCream {
+				public:
+				    virtual string getDescription() const = 0;
+				    virtual double cost() const = 0;
+				};
+				 
+				// Concrete Component - the basic ice cream class.
+				class VanillaIceCream : public IceCream {
+				public:
+				    string getDescription() const override
+				    {
+				        return "Vanilla Ice Cream";
+				    }
+				 
+				    double cost() const override { return 160.0; }
+				};
+				 
+				// Decorator - abstract class that extends IceCream.
+				class IceCreamDecorator : public IceCream {
+				protected:
+				    IceCream* iceCream;
+				 
+				public:
+				    IceCreamDecorator(IceCream* ic)
+				        : iceCream(ic)
+				    {
+				    }
+				 
+				    string getDescription() const override
+				    {
+				        return iceCream->getDescription();
+				    }
+				 
+				    double cost() const override
+				    {
+				        return iceCream->cost();
+				    }
+				};
+				 
+				// Concrete Decorator - adds chocolate topping.
+				class ChocolateDecorator : public IceCreamDecorator {
+				public:
+				    ChocolateDecorator(IceCream* ic)
+				        : IceCreamDecorator(ic)
+				    {
+				    }
+				 
+				    string getDescription() const override
+				    {
+				        return iceCream->getDescription()
+				               + " with Chocolate";
+				    }
+				 
+				    double cost() const override
+				    {
+				        return iceCream->cost() + 100.0;
+				    }
+				};
+				 
+				// Concrete Decorator - adds caramel topping.
+				class CaramelDecorator : public IceCreamDecorator {
+				public:
+				    CaramelDecorator(IceCream* ic)
+				        : IceCreamDecorator(ic)
+				    {
+				    }
+				 
+				    string getDescription() const override
+				    {
+				        return iceCream->getDescription() + " with Caramel";
+				    }
+				 
+				    double cost() const override
+				    {
+				        return iceCream->cost() + 150.0;
+				    }
+				};
+				 
+				int main()
+				{
+				    // Create a vanilla ice cream
+				    IceCream* vanillaIceCream = new VanillaIceCream();
+				    cout << "Order: " << vanillaIceCream->getDescription()
+				         << ", Cost: Rs." << vanillaIceCream->cost()
+				         << endl;
+				 
+				    // Wrap it with ChocolateDecorator
+				    IceCream* chocolateIceCream
+				        = new ChocolateDecorator(vanillaIceCream);
+				    cout << "Order: " << chocolateIceCream->getDescription()
+				         << ", Cost: Rs." << chocolateIceCream->cost()
+				         << endl;
+				 
+				    // Wrap it with CaramelDecorator
+				    IceCream* caramelIceCream
+				        = new CaramelDecorator(chocolateIceCream);
+				    cout << "Order: " << caramelIceCream->getDescription()
+				         << ", Cost: Rs." << caramelIceCream->cost()
+				         << endl;
+				 
+				    delete vanillaIceCream;
+				    delete chocolateIceCream;
+				    delete caramelIceCream;
+				 
+				    return 0;
+				}
+		Giải thích:
+  			- IceCream là lớp giao diện, đại diện cho thành phần cốt lõi của kem, giao diện này định nghĩa hai phương thức thuần ảo là getDescription() và cost().
+			  Các phương thức này cung cấp mô tả về loại kem và chi phí, được áp dụng cho mọi loại kem
+     			- VanillaIceCream là một lớp cụ thể kế thừa từ IceCream.
+			  Nó cung cấp một cách triển khai cơ bản cho loại kem vani, với mô tả là “Vanilla Ice Cream” và chi phí là Rs.160
+     		   	- IceCreamDecorator là một lớp trừu tượng kế thừa từ IceCream.
+			  Lớp này có một biến bảo vệ iceCream kiểu IceCream*, dùng để lưu trữ một đối tượng kem để trang trí (decorating).
+			  IceCreamDecorator đóng vai trò như một lớp bao bọc (wrapper), chuyển tiếp các phương thức getDescription() và cost() đến đối tượng kem được bọc
+     			- ChocolateDecorator và CaramelDecorator là các lớp decorator cụ thể, kế thừa từ IceCreamDecorator.
+			  Mỗi lớp này có một biến con trỏ IceCream* trong constructor, cho phép chúng bao bọc các đối tượng kem khác.
+			  ChocolateDecorator và CaramelDecorator thêm các topping tương ứng và cập nhật mô tả và chi phí kem
+     			- Trong main(), chúng ta thử nghiệm việc trang trí cho một loại kem:
+			  Tạo một đối tượng VanillaIceCream và in ra mô tả, chi phí.
+			  Sau đó, bọc nó bằng ChocolateDecorator để thêm topping sô-cô-la, rồi in mô tả, chi phí cập nhật.
+			  Cuối cùng, bọc tiếp đối tượng ChocolateDecorator với CaramelDecorator để thêm caramel, rồi in ra mô tả và chi phí cuối cùng
+     
 </details>
 
 <details>
