@@ -345,8 +345,9 @@ Trong ví dụ trên trạng thái đèn đỏ đầu tiên, khi chờ khoảng 
 
 
 <details>
-	<summary>LESSON 9: Json in C </summary>
- ● JSON được thiết kế để dễ đọc và dễ viết cho con người, cũng như dễ dàng để phân tích và tạo ra cho máy tính. Nó sử dụng một cú pháp nhẹ dựa trên cặp key - value, tương tự như các đối tượng và mảng 	trong javascript. Mỗi đối tượng JSON bao gồm một 		  tập hợp các cặp "key" và "value", trong khi mỗi mảng JSON là một tập hợp các giá trị.
+      <summary>LESSON 9: Json in C </summary>
+ ● JSON được thiết kế để dễ đọc và dễ viết cho con người, cũng như dễ dàng để phân tích và tạo ra cho máy tính. Nó sử dụng một cú pháp nhẹ dựa trên cặp key - value, tương tự như các đối tượng và mảng trong javascript. Mỗi đối tượng JSON bao gồm một 	 
+   tập hợp các cặp "key" và "value", trong khi mỗi mảng JSON là một tập hợp các giá trị.
  ● Định dạng: luôn bắt đầu bằng dấu "........." Một object luôn nằm trong dấu {........} "<key (luôn là kiểu String)>" : " value "
 			VD:
 		              char *json = "
